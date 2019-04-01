@@ -32,3 +32,12 @@ func TestGetValuteByName(t *testing.T) {
 		}
 	}
 }
+
+func TestConvert(t *testing.T) {
+	result := src.Convert("USD", "RUB", 1)
+	if result == 0.0 {
+		t.Error(
+			"Error with converting currencies",
+		)
+	}
+}
