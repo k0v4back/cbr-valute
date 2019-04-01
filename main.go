@@ -1,13 +1,10 @@
 package main
 
 import (
-	"./data"
+	"./src"
 	"fmt"
 )
 
-var url = "https://www.cbr.ru/scripts/XML_daily_eng.asp"
-
 func main() {
-	result, _ := data.GetValuteByName(url, "USD")
-	fmt.Println(result)
+	fmt.Println(src.Convert("USD", "AZN", 1))
 }

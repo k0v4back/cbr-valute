@@ -1,4 +1,4 @@
-package data
+package src
 
 import (
 	"encoding/xml"
@@ -31,6 +31,8 @@ type NowRate struct {
 	Name    string
 	Value   float64
 }
+
+var UrlParse = "https://www.cbr.ru/scripts/XML_daily_eng.asp"
 
 var NowRates map[string]NowRate
 
@@ -68,18 +70,17 @@ func GetAllValute(url string) (map[string]NowRate, error) {
 }
 
 
-func GetValuteByName (url, name string) (NowRate, error) {
-	allValet, err := GetAllValute(url)
+func GetValuteByName (name string) (float64, error) {
+	allValet, err := GetAllValute(UrlParse)
 	if err != nil {
-		log.Printf(err.Error())
-		panic(err)
+		return 0.0, err
 	}
 
 	for _, v := range allValet {
 		if v.CharCode == name {
-			return v, nil
+			return v.Value, nil
 		}
 	}
 
-	return NowRate{}, nil
+	return 0.0, nil
 }
