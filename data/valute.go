@@ -27,7 +27,7 @@ type valute struct {
 type NowRate struct {
 	ID      string
 	NumCode int64
-	ISOCode string
+	CharCode string
 	Name    string
 	Value   float64
 }
@@ -58,11 +58,28 @@ func GetAllValute(url string) (map[string]NowRate, error) {
 		NowRates[el.CharCode] = NowRate{
 			ID:      el.ID,
 			NumCode: el.NumCode,
-			ISOCode: el.CharCode,
+			CharCode: el.CharCode,
 			Name:    el.Name,
 			Value:   value / el.Nominal,
 		}
 	}
 
 	return NowRates, nil
+}
+
+
+func GetValuteByName (url, name string) (NowRate, error) {
+	allValet, err := GetAllValute(url)
+	if err != nil {
+		log.Printf(err.Error())
+		panic(err)
+	}
+
+	for _, v := range allValet {
+		if v.CharCode == name {
+			return v, nil
+		}
+	}
+
+	return NowRate{}, nil
 }
