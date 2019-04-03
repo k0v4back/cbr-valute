@@ -70,17 +70,17 @@ func GetAllValute(url string) (map[string]NowRate, error) {
 }
 
 
-func GetValuteByName (name string) (float64, error) {
+func GetValuteByName (name string) (float64) {
 	allValet, err := GetAllValute(UrlParse)
 	if err != nil {
-		return 0.0, err
+		return 0.0
 	}
 
 	for _, v := range allValet {
 		if v.CharCode == name {
-			return v.Value, nil
+			return v.Value
 		}
 	}
 
-	return 0.0, nil
+	return 0.0
 }
