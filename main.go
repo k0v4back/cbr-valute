@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./src"
 	"fmt"
+	"github.com/k0v4back/cbr-valute/src"
 )
 
 func main() {
