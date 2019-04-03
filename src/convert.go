@@ -10,7 +10,7 @@ func Convert(from, to string, count int) (result float64) {
 		return float64(int(result*100))/100
 	}
 	if to == "RUB"{
-		result := ConvertByRubles(from, to, count)
+		result := ConvertToRubles(from, to, count)
 		return float64(int(result*100))/100
 	}
 
@@ -29,7 +29,7 @@ func Convert(from, to string, count int) (result float64) {
 	return float64(int(transform*100))/100
 }
 
-func ConvertByRubles(from, _ string, count int) (result float64) {
+func ConvertToRubles(from, _ string, count int) (result float64) {
 	valuteFromForOne, err := GetValuteByName(from)
 	valuteToForOne := 1.0
 	if err != nil {
