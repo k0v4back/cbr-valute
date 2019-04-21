@@ -15,7 +15,7 @@ $ go get github.com/k0v4back/cbr-valute/src
 
 ### Description of methods
   - src.Convert("USD", "RUB", 1)
-    - USD - currency from which to convert
+    - USD - currency from which from convert
     - RUB - currency to convert
     - 1   - amount of first currency
   - src.GetValuteByName("USD")
